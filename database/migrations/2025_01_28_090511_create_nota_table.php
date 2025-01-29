@@ -13,9 +13,12 @@ return new class extends Migration
     {
         Schema::create('nota', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->date('tanggal');
-            $table->string('nama');
+            $table->string('nama_toko');
             $table->string('deskripsi');
+            $table->string('budget_code');
+            $table->string('nomor_fr');
             $table->decimal('nominal', 10, 2);
             $table->timestamps();
         });

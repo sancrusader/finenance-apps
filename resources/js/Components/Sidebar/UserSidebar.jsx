@@ -55,12 +55,12 @@ export function AppSidebar(props) {
         isActive: true,
         items: [
           {
-            title: "History",
-            url: route('dashboard'),
+            title: "Upload Nota",
+            url: route('kun.index'),
           },
           {
-            title: "Starred",
-            url: "#",
+            title: "List",
+            url: route('kun.nota'),
           },
           {
             title: "Settings",
