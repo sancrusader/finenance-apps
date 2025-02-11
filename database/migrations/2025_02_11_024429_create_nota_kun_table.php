@@ -11,15 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('nota', function (Blueprint $table) {
+        Schema::create('nota_kun', function (Blueprint $table) {
             $table->id();
+            $table->uuid('uuid')->unique();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->date('tanggal');
+            $table->string('name');
+            $table->string('tanggal');
             $table->string('nama_toko');
             $table->string('deskripsi');
             $table->string('budget_code');
             $table->string('nomor_fr');
             $table->decimal('nominal', 10, 2);
+            $table->string('images');
             $table->timestamps();
         });
     }
@@ -29,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('nota');
+        Schema::dropIfExists('nota_kun');
     }
 };

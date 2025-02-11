@@ -2,7 +2,7 @@
 
 import React from "react"
 import { BadgeCheck, Bell, ChevronsUpDown, CreditCard, LogOut, Sparkles } from "lucide-react"
-
+import {useForm} from "@inertiajs/react"
 import { Avatar, AvatarFallback, AvatarImage } from "@/Components/ui/avatar"
 import {
   DropdownMenu,
@@ -17,8 +17,12 @@ import { SidebarMenu, SidebarMenuButton, SidebarMenuItem, useSidebar } from "@/C
 import { usePage } from "@inertiajs/react"
 
 export function NavUser() {
-  const { props: { auth: { user } } } = usePage();
-
+  const user = usePage().props.auth.user
+  const { post } = useForm();
+  const handleLogout = (e) => {
+    e.preventDefault();
+    post(route("logout"));
+};
   const { isMobile } = useSidebar()
 
   return (
@@ -82,7 +86,7 @@ export function NavUser() {
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>
+            <DropdownMenuItem onClick={handleLogout}>
               <LogOut />
               Log out
             </DropdownMenuItem>

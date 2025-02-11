@@ -9,9 +9,12 @@ use Illuminate\Support\Facades\Http;
 
 class ExtractImageController extends Controller
 {
+    // Kun Nota
     public function index(){
         return Inertia::render('Dashboard/User/Kun/Index');
     }
+
+    // Analysis image with openAi
     public function analyzeImage(Request $request)
     {
         // Validasi file upload
@@ -38,10 +41,10 @@ class ExtractImageController extends Controller
                         [
                             'type' => 'text',
                             'text' => 'Analyze this image and extract the following information:
-                                - tanggal
+                                - tanggal (with format example 1 Maret 2025)
                                 - nama toko
                                 - deskripsi
-                                - nominal
+                                - nominal (format decimal)
                                 - budget code / bc
                                 - nomor fr
                                 Present the extracted information in a JSON format with these fields as keys.',

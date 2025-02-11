@@ -10,11 +10,4 @@ export default defineConfig({
         }),
         react(),
     ],
-    server: {
-        host: '192.168.18.20', // Mengizinkan akses dari semua IP di jaringan
-        port: 5173, // Port default Vite (bisa diganti)
-        watch: {
-          usePolling: true,
-        }
-      }
 });

@@ -8,13 +8,12 @@ use App\Http\Controllers\Kun\ExtractImageController;
 use App\Http\Controllers\Kun\NotaController;
 
 // Dashboard Admin
-Route::prefix('app')->middleware(['auth', 'role:admin', 'verified'])->group(function () {
+Route::prefix('app')->middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/', [AdminPanelController::class, 'index'])->name('admin.dashboard');
 
 });
-
 // Dashboard User
-Route::prefix('/')->middleware(['auth', 'role:user', 'verified'])->group(function () {
+Route::prefix('/')->middleware(['auth', 'role:user'])->group(function () {
     // Dashboard user
     Route::get('/', [UserPanelController::class, 'index'])->name('dashboard');
     // menampilkan kamera
@@ -23,6 +22,8 @@ Route::prefix('/')->middleware(['auth', 'role:user', 'verified'])->group(functio
     Route::post('kun', [ExtractImageController::class, 'analyzeImage'])->name('kun.store');
     // Menampilkan List Nota
     Route::get('kun/nota', [NotaController::class, 'index'])->name('kun.nota');
+
+    Route::post('kun/store', [NotaController::class, 'store'])->name('nota.database');
 });
 
 // Profile
